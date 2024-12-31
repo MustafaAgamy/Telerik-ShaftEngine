@@ -1,6 +1,7 @@
 package com.qyood.telerik;
 
 import com.shaft.driver.SHAFT;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class LoginPage {
@@ -14,12 +15,14 @@ public class LoginPage {
         this.driver = driver;
     }
 
+    @Step("Login")
     public LoginPage login(String email) {
         driver.element().type(emailField_input,email);
         driver.element().click(next_button);
         return this;
     }
 
+    @Step("Verify Navigation To Login Page")
     public LoginPage verifyNavigationToLoginPage(String title) {
         driver.verifyThat().element(loginPageTitle_h4).textTrimmed().contains(title);
         return this;

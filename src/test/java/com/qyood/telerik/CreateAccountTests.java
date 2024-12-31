@@ -22,7 +22,7 @@ public class CreateAccountTests {
                 .verifyNavigationToLoginPage(testData.getTestData("loginPageTitle"))
                 .login(testData.getTestData("email"));
         new RegisterAccountPage(driver)
-                .verifyNavigationToSignUpPage(testData.getTestData("signUpPageTitle"))
+                .verifyNavigationToRegisterPage(testData.getTestData("registerPageTitle"))
                 .fillSignUpForm(
                         testData.getTestData("password"), testData.getTestData("firstName"),
                         testData.getTestData("lastName"), testData.getTestData("company"),

@@ -1,6 +1,7 @@
 package com.qyood.telerik;
 
 import com.shaft.driver.SHAFT;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class GetFreeTrialPage {
@@ -14,12 +15,14 @@ public class GetFreeTrialPage {
         this.driver = driver;
     }
 
+    @Step("Select UI For React")
     public GetFreeTrialPage selectUiForReact() {
         driver.element().click(tryNowDropDown_a);
         driver.element().click(uiForReact_a);
         return this;
     }
 
+    @Step("Verify Navigation To Get Free Trials Page")
     public GetFreeTrialPage verifyNavigationToGetFreeTrialPage(String title) {
         driver.verifyThat().element(getFreeTrialsTitle_h1).textTrimmed().contains(title);
         return this;

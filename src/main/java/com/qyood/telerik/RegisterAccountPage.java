@@ -1,6 +1,7 @@
 package com.qyood.telerik;
 
 import com.shaft.driver.SHAFT;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class RegisterAccountPage {
@@ -19,8 +20,7 @@ public class RegisterAccountPage {
         this.driver = driver;
     }
 
-
-
+    @Step("Fill Register Form Details")
     public RegisterAccountPage fillSignUpForm(String password, String firstName, String lastName,
                                               String company, String phone, String country) {
         driver.element().type(passwordField_input, password);
@@ -33,9 +33,8 @@ public class RegisterAccountPage {
         return this;
     }
 
-
-
-    public RegisterAccountPage verifyNavigationToSignUpPage(String title) {
+    @Step("Verify Navigation To Register Page")
+    public RegisterAccountPage verifyNavigationToRegisterPage(String title) {
         driver.verifyThat().element(signUpPageTitle_h4).textTrimmed().contains(title);
         return this;
     }
