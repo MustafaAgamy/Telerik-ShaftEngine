@@ -1,0 +1,13 @@
+{
+  "email" : "m1995m@gmail.com",
+  "password" : "1995soska",
+  "firstName" : "Mostafa",
+  "lastName" : "Agamy",
+  "company" : "Qyood",
+  "phone" : "011667895",
+  "country" : "Egypt",
+  "demosPageTitle" : "Demos",
+  "freeTrialPageSubTitle": "Free Trials",
+  "loginPageTitle" : "Enter Your Email to Sign in",
+  "signUpPageTitle" : "Create an Account"
+}
