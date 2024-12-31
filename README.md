@@ -34,7 +34,7 @@ This repository automates the SignUp functionality of the Telerik demo website S
 - **src/main/java/**: Application and utility classes.
 - **src/test/java/**: Test cases and test data.
 - **pom.xml**: Maven configuration file.
-
+- **github/workflows**: workflow files with custom tests runner.
 ---
 
 ### How to Run
@@ -42,7 +42,6 @@ This repository automates the SignUp functionality of the Telerik demo website S
    ```bash
    mvn test
    ```
-
 ---
 
 ### Customization
