@@ -1,5 +1,7 @@
 ### Description
-This repository automates the SignUp functionality of the Telerik demo website SHAFT Engine with Java. The project ensures efficient and reliable test execution.
+This repository automates the SignUp functionality of the Telerik demo website SHAFT Engine with Java 
+Using Fluent Design with POM for better user experience
+The project ensures efficient and reliable test execution.
 
 ---
 
