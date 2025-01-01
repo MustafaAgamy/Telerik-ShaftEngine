@@ -8,7 +8,7 @@ public class DemosPage {
     private SHAFT.GUI.WebDriver driver;
 
     private final By demosPageTitle_h1 = By.xpath("//h1[contains(@class,'mb0')]");
-    private final By getFreeTrialButton_a = By.xpath("//a[@href='/download' and contains(@class, 'Button')]");
+    private final By getFreeTrialButton_a = By.cssSelector("li.TK-Aside-Menu-Item.TK-bn>a[href='/download']");
 
 
     public DemosPage(SHAFT.GUI.WebDriver driver) {
