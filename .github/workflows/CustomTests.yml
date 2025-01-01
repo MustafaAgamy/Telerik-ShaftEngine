@@ -7,8 +7,8 @@ on:
         description: 'Path to Tests to be Executed'
         default: ''
       browsers:
-        description: 'Comma-separated list of browsers to execute tests against (e.g., chrome,firefox,edge)'
-        default: 'chrome,firefox,edge,safari'
+        description: 'Comma-separated list of browsers to execute tests against (e.g., chrome,firefox)'
+        default: 'chrome,firefox'
 jobs:
   preprocess:
     runs-on: ubuntu-latest
@@ -115,102 +115,5 @@ jobs:
         if: always()
         with:
           check_name: "Tests Results Firefox_Linux"
-          files: |
-            target/surefire-reports/TEST-*.xml
-
-  E2E_Edge_Windows_Test:
-    runs-on: windows-latest
-    needs: preprocess
-    if: contains(needs.preprocess.outputs.selected, 'edge')
-    permissions:
-      checks: write
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-      - name: Setup JDK 21
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: '21'
-      - name: Set up Maven
-        uses: stCarolas/setup-maven@v5
-        with:
-          maven-version: 3.9.6
-      - name: Run Tests
-        continue-on-error: true
-        run: mvn test -DtargetBrowserName="microsoftedge" -DexecutionAddress="local" -DtargetOperatingSystem="WINDOWS" -DwhenToTakePageSourceSnapshot="FailuresOnly" -DscreenshotParams_whenToTakeAScreenshot="FailuresOnly" -Dtest="${{ github.event.inputs.testsPath }}"
-      - name: Upload Allure Report as Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: Edge_Windows_Allure
-          path: "allure-report/*_AllureReport.html"
-      - name: Upload Execution Summary Report as Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: Edge_Windows_Summary
-          path: "execution-summary/ExecutionSummaryReport_*.html"
-#      - name: Publish Report
-#        continue-on-error: true
-#        uses: dorny/test-reporter@v1
-#        if: success() || failure()
-#        with:
-#          name: Tests Report Edge_Windows
-#          path: 'target/surefire-reports/TEST-*.xml'
-#          reporter: java-junit
-      - name: Publish Test Results
-        continue-on-error: true
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
-        if: always()
-        with:
-          check_name: "Tests Results Edge_Windows"
-          files: |
-            target/surefire-reports/TEST-*.xml
-
-
-  E2E_Safari_MacOS_Test:
-    runs-on: macos-latest
-    needs: preprocess
-    if: contains(needs.preprocess.outputs.selected, 'safari')
-    permissions:
-      checks: write
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-      - name: Setup JDK 21
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: '21'
-      - name: Set up Maven
-        uses: stCarolas/setup-maven@v5
-        with:
-          maven-version: 3.9.6
-      - name: Run Tests
-        continue-on-error: true
-        run: mvn test -DtargetBrowserName="safari" -DexecutionAddress="local" -DtargetOperatingSystem="MAC" -DwhenToTakePageSourceSnapshot="FailuresOnly" -DscreenshotParams_whenToTakeAScreenshot="FailuresOnly" -Dtest="${{ github.event.inputs.testsPath }}"
-      - name: Upload Allure Report as Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: Safari_MacOS_Allure
-          path: "allure-report/*_AllureReport.html"
-      - name: Upload Execution Summary Report as Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: Safari_MacOS_Summary
-          path: "execution-summary/ExecutionSummaryReport_*.html"
-#      - name: Publish Report
-#        continue-on-error: true
-#        uses: dorny/test-reporter@v1
-#        if: success() || failure()
-#        with:
-#          name: Tests Report Safari_MacOS
-#          path: 'target/surefire-reports/TEST-*.xml'
-#          reporter: java-junit
-      - name: Publish Test Results
-        continue-on-error: true
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
-        if: always()
-        with:
-          check_name: "Tests Results Safari_MacOS"
           files: |
             target/surefire-reports/TEST-*.xml
