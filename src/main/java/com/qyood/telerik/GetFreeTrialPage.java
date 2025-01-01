@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 public class GetFreeTrialPage {
     private SHAFT.GUI.WebDriver driver;
 
-    private final By getFreeTrialsTitle_h1 = By.tagName("h1");
+    private final By getFreeTrialsTitle_h1 = By.xpath("//h1[contains(@class,'mb1')]");
     private final By tryNowDropDown_a = By.xpath("//a[@href='#']");
     private final By uiForReact_a = By.xpath("//a[@href='/try/kendo-react-ui' and @class='u-db']");
 
