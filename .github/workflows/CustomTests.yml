@@ -6,7 +6,9 @@ on:
       testsPath:
         description: 'Path to Tests to be Executed'
         default: ''
-
+      browsers:
+        description: 'Comma-separated list of browsers to execute tests against (e.g., chrome,firefox,edge)'
+        default: 'chrome,firefox,edge,safari'
 jobs:
   preprocess:
     runs-on: ubuntu-latest
