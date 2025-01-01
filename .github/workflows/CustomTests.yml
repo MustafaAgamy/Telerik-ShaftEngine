@@ -8,8 +8,22 @@ on:
         default: ''
 
 jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+    outputs:
+      selected: ${{ steps.process.outputs.selected }}
+    steps:
+      - name: Process Browser Input
+        id: process
+        run: |
+          browsers="${{ github.event.inputs.browsers }}"
+          echo "Selected browsers: $browsers"
+          echo "::set-output name=selected::$browsers"
+
   E2E_Chrome_Linux_Test:
     runs-on: ubuntu-latest
+    needs: preprocess
+    if: contains(needs.preprocess.outputs.selected, 'chrome')
     permissions:
       checks: write
     steps:
@@ -56,6 +70,8 @@ jobs:
 
   E2E_Firefox_Linux_Test:
     runs-on: ubuntu-latest
+    needs: preprocess
+    if: contains(needs.preprocess.outputs.selected, 'firefox')
     permissions:
       checks: write
     steps:
@@ -102,6 +118,8 @@ jobs:
 
   E2E_Edge_Windows_Test:
     runs-on: windows-latest
+    needs: preprocess
+    if: contains(needs.preprocess.outputs.selected, 'edge')
     permissions:
       checks: write
     steps:
@@ -149,6 +167,8 @@ jobs:
 
   E2E_Safari_MacOS_Test:
     runs-on: macos-latest
+    needs: preprocess
+    if: contains(needs.preprocess.outputs.selected, 'safari')
     permissions:
       checks: write
     steps:
