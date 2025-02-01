@@ -1,0 +1,22 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+allure-results
+allure-report
+src/test/resources/form1.html
+src/test/resources/form2.html
+.idea/.gitignore
+performanceReport
+docker-compose.yaml
+Dockerfile
+generate_allure_report.sh
+!**/src/test/**/target/
+src/main/resources/properties/default
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
